@@ -1,0 +1,159 @@
+; -----------------------------------------------------------------------------------------------------------------
+; Name      : Budu Drive Letter Utility
+; Version   : V1.0Beta
+; Author    : Edy Yusuff
+; -----------------------------------------------------------------------------------------------------------------
+(Dalam pembinaan dan Penambahbaikkan)
+
+##> Tentang Software : ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~
+
+1- Secara asas sebagai utiliti untuk memudahkan mengubah partitions drive letter, boleh 8 partitions dalam satu masa
+2- Sesuai digunakan untuk menguruskan External USB HDD drive letter
+3- Mempunyai fungsi untuk menyimpan data setiap partitions dan autofill setiap partitions seperti yang telah ditetapkan
+2- Sesuai digunakan secara portable dimana software dijalankan dari External HDD atau USB Flashdrive
+
+##> Cara Kerja Software : ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~
+
+  Secara asas software menjalankan cmd.exe Diskpart system OS windows untuk mendapat data semua partition
+  yang disambungkan pada komputer. Data dari cmd Diskpart diproses dan membandingkan dengan data yang
+  disimpan dalam seting ini, semua senarai partitions yang telah siap diproses diisi kedalam combobox
+  untuk pengesahhan, setelah mendapat pengesahan(submit) dari pengguna sofware akan menulis 2 file
+  didalam System Temp folder, AssignDriveLetter.bat dan AssignDriveLetter.txt, Pegesahan sekali lagi
+  untuk menjalan AssignDriveLetter.bat mengunakan cmd.exe system OS windows
+
+  cmd.exe adalah Utility Default OS Windows untuk menguruskan partition dan tugas lain melalui command
+
+  Jika hanya ingin melihat cmd command yang akan dijalankan, tekan butang 'Cencel' pada windows pengesahan,
+  buka folder Temp system : C:\Users\User\AppData\Local\Temp\~BuduDriveLeterUtility\
+
+##> Maklumat Seting Configurations : ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~
+CheckBox :
+1-"Close Windows After Submit"
+  Tutup windows BuduDriveLetterUtility.exe apabila selesai proses
+2-"Skip AutoFill Drive Alredy Assign Letter As In Seting Ini"
+  Mengabaikan partitions yang seperti disimpan dalam seting ini, Jika mempunyai lebih
+  dari 8 partitions yang ingin diubah secara bersama, kotak ini sesuai ditanda untuk
+  memberi laluan kepada autofill partitions berikutnya untuk proses kedua
+3-"Pause Cmd Window After Finish"
+  Tutup Cmd.exe windows secara manual
+4-"Hide Cmd Windows"
+  Jalankan Cmd.exe secara senyap
+5-"Run Program In Text Box After Submit"
+  Automatik jalankan Program yang diisi dalam textbox dibawah setelah selesai
+6-"Program in same drive ( Using As Portable In USB Drive )"
+  Program yang diisi dalam textbox dibawah didalam partition yang sama dengan
+  BuduDriveLetterUtility.exe (partition dalam senarai untuk diubah Drive letter(sebagai Portable)
+
+TextBox :
+7-Textbox untuk Program Path yang akan dijalankan setelah selesai
+
+
+
+##> Bagaimana Menggunakannya : ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~
+
+Untuk penggunaan biasa, jalankan software, pilih patititions, tetapkan drive letter,
+dan tekan butang submit dan butang pengesahan untuk mengubah drive letter seperti yang dipilih.
+
+Untuk pengunaan berulang atau mempuyai banyak external(usb/portable) hdd dan patitions
+yang hendak ditetapkan drive letter, Fungsi menyimpan partitions data sesuai digunakan.
+Setiap kali BuduDriveLetterUtility dijalankan ketika External HDD disambungkan, software akan autofill
+combobox seperti yang telah ditetapkan dalam seting, hanya perlu tekan buton 'Submit' dan Pengesahan
+untuk meneruskan proses menukar drive letter.
+
+##> Maklumat Data Partitions Drive dan Contoh : ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~
+
+  F=0CF708D2-323GB-Document
+
+  F         : Partition Drive Letter
+  0CF708D2  : Partition Serial Number
+  323GB     : Partition Size
+  Document  : Partition Name
+
+ Jika data dalam kotak 'All Partitions Drive Data',
+   F : ialah Drive letter yang sedang digunakan oleh komputer
+
+ Jika data dalam kotak 'Ini Seting Partitions Drive Letter' (dan 'Drive Data in Seting Ini')
+   F : ialah Drive letter yang akan diubah kepada F semasa proses
+
+ Contoh format Data yang boleh digunakan untuk disimpan dalam seting ini,
+ Contoh ingin menukar partitions F diatas kepada Q
+
+  Q=0CF708D2
+  Q=0CF708D2-323
+  Q=0CF708D2-323GB
+  atau data dengan nama penuh
+  Q=0CF708D2-323GB-Document
+
+ Bergantung kepada keperluan dan pengguaan, sebagai contoh partitions mempunyai serial
+ dan saiz yang sama(clone partitions atau HDD/pendua), jika perlu ubah nama partitions pendua
+ dan gunakan data secara penuh : Q=0CF708D2-323GB-Nama Baru
+
+##> Panduan Menyimpan Data Partitions Drive : ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~
+
+Sebagai contoh :
+Jika anda mempuyai 2 USB HDD(atau lebih) yang ingin ditetapkan partitions drive letter
+yang sama yang ingin ditetapkan walaupun digunakan pada komputer berbeza.
+  HDD 1 mempunyai 4 Partitions, partitions 1 = Q, partitions 2 = U, partitions 3 = R, partitions 2 = S
+  HDD 2 mempunyai 3 Partitions, partitions 1 = Q, partitions 2 = R, partitions 3 = S
+
+Perhatian :
+ *Jika Kedua HDD digunakan bersama dalam satu masa, sofware hanya autofill partitions
+  yang paling atas dan tidak pada pada partitions kedua yang ditetapkan letter yang sama.
+  anda mesti menetapkan drive letter berbeza setiap partitions,
+  Dalam contoh ini, Kedua USB HDD digunakan berasingan, tidak digunakan dalam satu masa.
+
+ *Untuk keselamatan, Tutup semua folder, files dan software dari partitions yang hendak
+  diubah drive letter, Jika sofware BuduDriveLetterUtility.exe digunakan secara portable didalam
+  external HDD lihat panduan pada no 1 dibawah
+
+1-Sambungkan HDD 1 pada komputer, tunggu beberapa saat untuk komputer mengesan USB HDD
+
+ *dalam contoh ini, software BuduDriveLetterUtility.exe digunakan secara portable yang
+  disimpan didalam Partitions 1 pada kedua-dua HDD 1 dan HDD 2,
+  Buka Partition 1 dimana software disimpan dan Jalankan software(dan tutup widows explorer)
+
+2-Jalankan Software, tunggu beberapa saat sehingga message text 'Wait!' dibawah hilang,
+  buka tab 'Drive Seting', Tekan butang 'All Drive Info' untuk membuka windows
+  tentang maklumat dan data semua partitions
+
+3-Kotak atas, maklumat windows Diskpart, Kotak 'Drive Data in Seting Ini' untuk
+  memaparkan data dalam seting Dan 'All Partitions Drive Data' memaparkan semua partitions
+  yang disambungkan pada komputer dalam format BuduDriveLetterUtility.exe data seting
+
+4-Pilih dan copy 4 partitions data untuk HDD 1 dalam kotak 'All Partitions Drive Data'
+  (kebiasaan 4 paling bawah) dan paste kedalam kotak 'Ini Seting Partitions Drive Letter'
+  pada windows utama, Ubah Drive letter(abjab pertama), sebagai contoh :
+  partition 1 : E=74ED41E0-106GB-Backup 1, ubah kepada  Q=74ED41E0-106GB-Backup 1
+  partition 2 : F=0CF708D2-323GB-Document, ubah kepada  U=0CF708D2-323GB-Document
+  seterusnya ubah partition 3 kepada R dan partition 4 kepada S
+  Dan Tekan Butang 'Save Seting'.
+
+5-Buka Tab 'Drive Manager' dan tekan butang 'Refresh', tunggu beberapa saat untuk software
+  memprose data, dan sofware akan autofill combobox dengan data seperti yang
+  telah ditetapkan dalam seting diatas. semak patitions dan leter, pastikan ia betul
+
+ *Siap set ini seting untuk HDD 1,(untuk HDD 2 ulang step 1 hingga 5 diatas)
+  Dibawah cara mengubah Drive letter
+
+6-Tekan Butang 'Submit', windows pengesahan Cmd.exe akan terbuka dan memaparkan maklumat
+  partitions untuk pengesahan, semak sekali lagi data patitions dan leter,
+  tekan butang 'OK' untuk meneruskan proses(butang 'Cencel' untuk membatalkan proses)
+
+7-Window BuduDriveLetterUtility akan tertutup untuk memberi laluan proses dan Windows Cmd.exe
+  akan terbuka menjalankan proses menukar partitions drive letter, tunggu sehingga selesai,
+  secara default Windows Cmd akan tertutup apabila selesai, jika tidak tertutup
+  tekan enter untuk menutupnya.(mungkin kotak pause ditanda dalam seting,
+  Buka Tab "Configurations" dan hilangkan tanda pada kotak "Pause Cmd Window After Finish")
+
+8-Sekarang semua keempat partitions letter HDD 1 telah siap ditukar kepada Q U R S
+  Bergantung kepada seting didalam Tab "Configurations", jika kotak "Close Windows After Submit"
+  tidak ditanda, Window BuduDriveLetterUtility akan terbuka secara automatik selepas Windows Cmd.exe tertutup.
+
+9-Selesai menukar partitions drive letter HDD 1, untuk HDD 2 ulang proses yang sama untuk seperti diatas
+
+  Sekarang setiap kali anda menyambung HDD 1 atau HDD 2 walaupun pada komputer berbeza dan
+  ingin menukar drive letter seperti yang telah ditetapkan, lakukan seperti langkah no 1,
+  BuduDriveLetterUtility.exe akan mengisi combobox secara auto, pastikan maklumat partitions dan letter
+  yang diisi betul(atau pilih yang lain jika anda mahu) dan tekan butang submit seperti langkah no 6
+
+
